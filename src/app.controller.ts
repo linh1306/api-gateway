@@ -1,12 +1,13 @@
-import { Controller, Get, Ip } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { IpAddress } from './ip-address.decorator';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  async myEndpointFunc(@Ip() ip: string) {
-    return { ip };
+  async myEndpointFunc(@IpAddress() ipAddress: string) {
+    return { ipAddress };
   }
 }
